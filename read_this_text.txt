@@ -1,4 +1,7 @@
 _____________GAME_______________
 
-TITLE : Match card.
-finished: 0.1(chưa có đồ họa).
+Tựa game : Match card.
+Phiên bản hoàn thành: 0.1(chưa có đồ họa).
+mô tả: Tìm các cặp số giống nhau sau bằng cách chọn chỉ số hàng và chỉ số cột. Mỗi ẩn số được hiển thị bằng "*"
+        Nếu tìm thấy cặp số giống nhau cặp số ấy sẽ được hiển thị.
+	khi nào hiển thị hết bảng số thì thắng.
