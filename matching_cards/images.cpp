@@ -1,4 +1,4 @@
-#include "images.h"
+#include "include.h"
 #include "SDL02.h"
 #include <SDL_image.h>
 
@@ -32,6 +32,7 @@ SDL_Texture* Gallery::loadTexture(std::string path )
 
 void Gallery::loadGamePictures()
 {
+    pictures[PIC_WIN] = loadTexture("images/winner.png");
     pictures[PIC_BGD] = loadTexture("images/background.png");
     card[1] = IMG_LoadTexture(renderer,"images/1.png");
     card[2] = IMG_LoadTexture(renderer,"images/2.png");
@@ -49,7 +50,6 @@ void Gallery::suffle()
     int r=0;
 
     srand ((unsigned)time(NULL));
-    int smap[16] = {1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8};
     for(int i=0;i<16;i++)
     {
         int s = rand() % 16;
@@ -62,7 +62,7 @@ void Gallery::suffle()
     {
         for(int d=0;d<4;d++)
         {
-            //srand (time(NULL)+(c+1)*(d+1));
+
             Tmap[c][d] = smap[r];
             r++;
         }
@@ -71,28 +71,59 @@ void Gallery::suffle()
 
 void Gallery::renderer_card()
 {
+    int k=1;
+    SDL_RenderClear( renderer );
+    SDL_RenderCopy( renderer, pictures[PIC_BGD] , NULL, NULL );
 
-    //SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-
-    //clears screen
-    //SDL_RenderClear(renderer);
-
-    int r;
     for(int c=0;c<4;c++)
     {
         for(int d=0;d<4;d++)
         {
-            r=Tmap[c][d];
+            display_card[k].x=140+d*210;
+            display_card[k].y=40+c*160;
+            display_card[k].w=150;
+            display_card[k].h=100;
 
-            displayRect.x=140+c*210;displayRect.y=40+d*160;displayRect.w=150;displayRect.h=100;
+            displayRect.x=140+c*210;
+            displayRect.y=40+d*160;
+            displayRect.w=150;
+            displayRect.h=100;
 
-            SDL_RenderCopy(renderer, card[r], NULL, &displayRect);
-            //SDL_RenderCopy(renderer, card[9], NULL, &displayRect);
+            //SDL_RenderCopy(renderer, card[r], NULL, &display_card[k]);
+            SDL_RenderCopy( renderer, card[9] , NULL, &displayRect );
+
+            k++;
 
         }
     }
 
     SDL_RenderPresent(renderer);
+}
+
+void Gallery::render(int r)
+{
+    SDL_RenderCopy(renderer,card[smap[r-1]],NULL, &display_card[r]);
+    //SDL_RenderCopy( renderer, card[9] , NULL, &display_card[r] );
+    SDL_RenderPresent(renderer);
+}
+
+void Gallery::update(int* cardstatus)
+{
+    //SDL_RenderClear( renderer );
+    SDL_Delay(1000);
+    for(int i=0;i<PIC_COUNT;i++)
+    {
+        if(cardstatus[i]==0)
+        {
+            SDL_RenderCopy(renderer, card[9] , NULL, &display_card[i+1] );
+        }
+        else
+        {
+            SDL_RenderCopy(renderer, card[smap[i]] , NULL, &display_card[i+1]);
+        }
+    }
+    SDL_RenderPresent(renderer);
+
 }
 
 
