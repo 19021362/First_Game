@@ -1,7 +1,12 @@
 _____________GAME_______________
 
 Tựa game : Match card.
-Phiên bản hoàn thành: 0.1(chưa có đồ họa).
+Phiên bản: 0.1(chưa có đồ họa).
 mô tả: Tìm các cặp số giống nhau sau bằng cách chọn chỉ số hàng và chỉ số cột. Mỗi ẩn số được hiển thị bằng "*"
         Nếu tìm thấy cặp số giống nhau cặp số ấy sẽ được hiển thị.
 	khi nào hiển thị hết bảng số thì thắng.
+
+Phiên bản: 1.0(có đồ họa nhưng chưa chơi được nhiều ván).
+mô tả: tìm 2 bức hình giống nhau bị ẩn bằng chuột
+	Nếu tìm thấy, 2 bức hình sẽ dk hiển thị.
+	Khi nào hiển thị hết các bức hình bị ẩn thì thắng.
