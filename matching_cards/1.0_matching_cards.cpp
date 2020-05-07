@@ -84,6 +84,7 @@ int main(int argc, char* argv[])
 
             if(e.type == SDL_QUIT){
                 game_status = true;
+                break;
             }
         game_status = true;
         for(int i=0;i<16;i++)
