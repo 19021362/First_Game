@@ -8,6 +8,7 @@ using namespace std;
 const int SCREEN_WIDTH = 1080;
 const int SCREEN_HEIGHT = 640;
 const char WINDOW_TITLE[] = "Matching Cards";
+const int Max =16;
 
 
 Gallery* gallery = nullptr;
@@ -49,7 +50,7 @@ int main(int argc, char* argv[])
         if(SDL_PollEvent( &e )==0)continue;
             if(e.type == SDL_MOUSEBUTTONDOWN)
             {
-                for( int i = 1; i <= 16; i++ )
+                for( int i = 1; i <= Max; i++ )
                 {
                     button[ i ].handleEvent( &e, i );
                     if(button[i].id!=0 && cnt%2==0)
@@ -87,7 +88,7 @@ int main(int argc, char* argv[])
                 break;
             }
         game_status = true;
-        for(int i=0;i<16;i++)
+        for(int i=0;i<Max;i++)
         {
             if(cardstatus[i]==0){
                 game_status = false;
