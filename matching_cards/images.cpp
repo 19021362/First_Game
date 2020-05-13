@@ -109,7 +109,8 @@ void Gallery::render(int r)
 
 void Gallery::update(int* cardstatus)
 {
-    //SDL_RenderClear( renderer );
+    SDL_RenderClear( renderer );
+    SDL_RenderCopy( renderer, pictures[PIC_BGD] , NULL, NULL );
     SDL_Delay(1000);
     for(int i=0;i<PIC_COUNT;i++)
     {
